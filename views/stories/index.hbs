@@ -1,0 +1,29 @@
+<h1>Stories</h1>
+<div class="row">
+    {{#each stories}}
+    <div class="col s12 m4">
+        <div class="card">
+            <div class="card-image">
+                {{{editIcon user ../user _id}}} {{!double curly brings in straight code, but triple curly brings in what
+                is actually defined}}
+            </div>
+            <div class="card-content center-align">
+                <h5>{{title}}</h5>
+                <p>{{stripTags (truncate body 150)}}</p>
+                <br>
+                <div class="chip">
+                    <img src="{{user.image}}" alt="">
+                    <a href="/stories/user//{{user._id}}">{{user.displayName}}</a> {{!THIS IS HOW COMMENTS ARE WRITTEN
+                    IN hbs, anyway this code is for the "chip", which is the the little section below the users name in
+                    the stories section that displays their name and profile image}}
+                </div>
+            </div>
+            <div class="card-action center-align">
+                <a href="/stories/{{_id}}" class="btn grey">Read More</a>
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <p>No stories to display</p>
+    {{/each}}
+</div>
